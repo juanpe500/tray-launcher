@@ -1,0 +1,29 @@
+{
+  "title": "TRY Launcher",
+  "_help": {
+    "label": "text shown in the menu (required)",
+    "path": "path to a .bat / .cmd / .exe / any command (required). Absolute, or relative to the app folder. Supports %ENV_VARS% and ~",
+    "mode": "'console' (visible window, default) or 'hidden' (no window). Both are stoppable from the Running submenu.",
+    "args": "optional list of arguments, e.g. [\"MyServer\", \"8080\"]",
+    "cwd": "optional working directory (defaults to the folder of 'path')",
+    "admin": "optional true = launch elevated (UAC prompt). Note: elevated tasks cannot be stopped from the menu.",
+    "separator": "use { \"separator\": true } to draw a divider line",
+    "submenu": "use { \"label\": \"Group\", \"submenu\": [ ...items ] } to nest a group"
+  },
+  "items": [
+    { "label": "My app (console)", "path": "C:\\path\\to\\your\\app.bat", "mode": "console" },
+    { "label": "VPN tunnel (hidden, elevated)", "path": "C:\\path\\to\\vpn.bat", "mode": "hidden", "admin": true },
+    { "label": "Server with args", "path": "C:\\path\\to\\server.cmd", "mode": "console", "args": ["--port", "8080"] },
+    { "separator": true },
+    {
+      "label": "A group of tools",
+      "submenu": [
+        { "label": "Tool one", "path": "C:\\path\\to\\tool1.bat", "mode": "console" },
+        { "label": "Background worker", "path": "C:\\path\\to\\worker.bat", "mode": "hidden" }
+      ]
+    },
+    { "separator": true },
+    { "label": "Self-test (console, loops until stopped)", "path": "selftest.bat", "mode": "console" },
+    { "label": "Self-test (hidden, loops until stopped)", "path": "selftest.bat", "mode": "hidden" }
+  ]
+}
